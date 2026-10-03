@@ -1,0 +1,82 @@
+{
+  "$comment": "Structural shape only. DESIGN.md and MACHINE-PROTOCOL.md add mandatory semantic, canonicalization, strict-token, aggregate-cap and relational constraints.",
+  "$id": "urn:shardcairn:export:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "export_version": {
+      "const": 1
+    },
+    "format": {
+      "enum": [
+        "json",
+        "pytest-argfile"
+      ]
+    },
+    "manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
+      "type": "string"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
+      "type": "string"
+    },
+    "shards": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "active_setup_count": {
+            "maximum": 2048,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "filename": {
+            "pattern": "^shard-[0-9]{3}\\.(json|args)(?![\\s\\S])",
+            "type": "string"
+          },
+          "index": {
+            "maximum": 63,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "load_ms": {
+            "maximum": 9007199254740991,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "selector_count": {
+            "maximum": 50000,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "unit_count": {
+            "maximum": 10000,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "index",
+          "filename",
+          "unit_count",
+          "selector_count",
+          "active_setup_count",
+          "load_ms"
+        ],
+        "type": "object"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "export_version",
+    "format",
+    "manifest_sha256",
+    "plan_sha256",
+    "shards"
+  ],
+  "title": "ShardCairn export index version 1",
+  "type": "object"
+}

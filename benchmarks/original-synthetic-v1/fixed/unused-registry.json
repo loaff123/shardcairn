@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "setups": [
+    {
+      "cost_ms": 30,
+      "id": "db"
+    },
+    {
+      "cost_ms": 9007199254740991,
+      "id": "never"
+    }
+  ],
+  "shards": 2,
+  "timing_basis": "exclusive-additive-once-per-shard-v1",
+  "units": [
+    {
+      "exclusive_cost_ms": 10,
+      "id": "A",
+      "selectors": [
+        "tests/test_owned.py::TestSequence::test_first",
+        "tests/test_owned.py::TestSequence::test_second"
+      ],
+      "setup_ids": [
+        "db"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 10,
+      "id": "B",
+      "selectors": [
+        "tests/test_owned.py::test_b"
+      ],
+      "setup_ids": [
+        "db"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 30,
+      "id": "C",
+      "selectors": [
+        "tests/test_owned.py::test_c"
+      ],
+      "setup_ids": []
+    },
+    {
+      "exclusive_cost_ms": 30,
+      "id": "D",
+      "selectors": [
+        "tests/test_owned.py::test_d"
+      ],
+      "setup_ids": []
+    }
+  ]
+}

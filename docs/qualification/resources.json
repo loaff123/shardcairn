@@ -1,0 +1,231 @@
+{
+  "hard_limits_lowered": false,
+  "passed": true,
+  "product_sources": {
+    "src/shardcairn/__init__.py": "b9daca5ae13c56995d36115b9b28992edacfb28a78edf516cda7a4a94636253f",
+    "src/shardcairn/__main__.py": "6f02b698ff2469c2b9eac04bc95f3252d6b9c0fc0221b27e5bf9650a3889f897",
+    "src/shardcairn/audit.py": "f159d914285d88d2f262820bd6e32b530c2d228668bdebbb0a8cf7da66e0fc42",
+    "src/shardcairn/baseline.py": "adf345dfac3e7b2d455c7a2017c107ffca6fe56672618baebd6b9a1977b237de",
+    "src/shardcairn/budgets.py": "b707e6f6ce7747bc05008b2418f967977f92215b38b62f2d849fb3337d5d75d9",
+    "src/shardcairn/canonical.py": "03419c0e46c8da24f251b42508ab203444011c3fc37177368ab1924d0f419be0",
+    "src/shardcairn/cli.py": "4dea4a9a0eb9d28238b18daf7f810c40e40c9d9c2a715e6653b87c22212d2b15",
+    "src/shardcairn/errors.py": "54ae1bd9ab4e91bf9307162006a28461d70d9d568e15f6f4ebe86cd8680955dd",
+    "src/shardcairn/exporter.py": "e0bde4b4806aefb05dd4f606551df0642dcd190046a3a92861607a7a6ca7bea9",
+    "src/shardcairn/manifest.py": "45dc7108b056a30049b4e4421c9d20171ae7ded8799244ff670557ee5ccac8a1",
+    "src/shardcairn/optimization.py": "6d95355bf1a7bc878ab47529ffc0581adb27baf34b53a90734b2f1bc6b955e7f",
+    "src/shardcairn/parsing.py": "27ee60f0fe1bb77def9a93bd16e87c3d765f5f1c07c3188b23e57e3ceca083a7",
+    "src/shardcairn/planner.py": "c6166b19202edb3c58a0c25fcf25d07a3aeabb9a49c26e89a14920d0125b311d",
+    "src/shardcairn/schemas/cli-result.schema.json": "2cf6726904b218ff69bf7ce745dbd10d048be38c06b002db9954e0a1aac194fc",
+    "src/shardcairn/schemas/completion.schema.json": "1c60776249eeb193d3a5ac9f7704fc42e079a5752cac9a7c744b34a7932502c4",
+    "src/shardcairn/schemas/export.schema.json": "c73e7a6c6835f5fdc59e64f59430d45b41565ffb1493c8e17dc6976a9f822c02",
+    "src/shardcairn/schemas/manifest.schema.json": "ed5373e322d22dc46387e2ed16c7640c56673c197faf9fa7eb17c14102fe915f",
+    "src/shardcairn/schemas/plan.schema.json": "ceee6a5d5dfb90f003eb43cc00d23e11b53cc67373530467cbfe7247f093ce69",
+    "src/shardcairn/schemas/shard-selectors.schema.json": "1907fdda4bf0b81175aaddd414d0b47e4dc1556b3c987834011cc092e67b0c1d",
+    "src/shardcairn/schemas/verification.schema.json": "edf47c12f65d83bb42823fd6840ed04d3744eb9bf22620e4d13b012ac1621646",
+    "src/shardcairn/verifier.py": "6c870faaec4b3f8ca485f24bf02d8a5d0687eea0f158a327f41e951e55923519",
+    "src/shardcairn/version.py": "1bee1c21a3b9c1e52d2ccfd20c109ca2129dbc2bc065a9a31d7c0ed80cf1e419"
+  },
+  "qualification_date": "2026-10-03",
+  "records": [
+    {
+      "cpu_seconds": 20.167718278000002,
+      "dimensions": {
+        "manifest_bytes": 13436313,
+        "references_per_unit": 64,
+        "selectors": 50000,
+        "setups": 2048,
+        "shards": 64,
+        "total_references": 640000,
+        "units": 10000
+      },
+      "elapsed_seconds": 20.171581098002207,
+      "fixture": "counts",
+      "input_sha256": "eedd7617d062d2d48fd298899ea0d71cce4545a9968dec8e40dbf32865952763",
+      "operation": "baseline",
+      "peak_rss_bytes": 230559744,
+      "platform": "linux",
+      "python": "3.12.14",
+      "result": {
+        "claim": "feasible",
+        "plan_bytes": 8833158,
+        "work": {
+          "budget_events": [
+            {
+              "budget": "primitive_work",
+              "phase": "marginal_seed"
+            }
+          ],
+          "denied_budgets": [
+            "primitive_work"
+          ],
+          "exact_node_limit": 0,
+          "exact_nodes_entered": 0,
+          "local_candidate_limit": 0,
+          "local_candidates_started": 0,
+          "local_state": "not_started",
+          "primitive_work_limit": 0,
+          "primitive_work_used": 0
+        }
+      }
+    },
+    {
+      "cpu_seconds": 10.491251824999999,
+      "dimensions": {
+        "manifest_bytes": 13436313,
+        "references_per_unit": 64,
+        "selectors": 50000,
+        "setups": 2048,
+        "shards": 64,
+        "total_references": 640000,
+        "units": 10000
+      },
+      "elapsed_seconds": 10.492672323998704,
+      "fixture": "counts",
+      "input_sha256": "eedd7617d062d2d48fd298899ea0d71cce4545a9968dec8e40dbf32865952763",
+      "operation": "verify",
+      "peak_rss_bytes": 215306240,
+      "platform": "linux",
+      "python": "3.12.14",
+      "result": {
+        "audit": {
+          "assignment_limit": 0,
+          "assignments_visited": 0,
+          "state": "not_requested",
+          "witness": null
+        },
+        "checks": {
+          "arithmetic": true,
+          "baseline": true,
+          "coverage": true
+        },
+        "errors": [],
+        "manifest_sha256": "c965e3b10973191a8a8399e5005aaafba48c97ba756dcb7ac8ba975a2ccf2d9c",
+        "optimality": "not_certified",
+        "plan_sha256": "d09c167b8423ef0fe7447ff18b6dcaaae199a2b7d5753705530f3bd301dc9551",
+        "producer_claim": "feasible",
+        "result": "valid",
+        "verification_version": 1
+      }
+    },
+    {
+      "cpu_seconds": 21.600299365,
+      "dimensions": {
+        "manifest_bytes": 13436313,
+        "references_per_unit": 64,
+        "selectors": 50000,
+        "setups": 2048,
+        "shards": 64,
+        "total_references": 640000,
+        "units": 10000
+      },
+      "elapsed_seconds": 21.607547359002638,
+      "fixture": "counts",
+      "input_sha256": "eedd7617d062d2d48fd298899ea0d71cce4545a9968dec8e40dbf32865952763",
+      "operation": "export",
+      "peak_rss_bytes": 254517248,
+      "platform": "linux",
+      "python": "3.12.14",
+      "result": {
+        "export_bytes": 7616156
+      }
+    },
+    {
+      "cpu_seconds": 15.127877327999999,
+      "dimensions": {
+        "manifest_bytes": 16777216,
+        "references_per_unit": 0,
+        "selector_scalars": 4096,
+        "selectors": 1000,
+        "setups": 0,
+        "shards": 64,
+        "units": 1000
+      },
+      "elapsed_seconds": 15.143861832002585,
+      "fixture": "unicode",
+      "input_sha256": "abd00a0ec7681e3da3fd53cf0615dd6cc4b20c0c3be76e4ec2e0ca9663aa08ca",
+      "operation": "baseline",
+      "peak_rss_bytes": 195817472,
+      "platform": "linux",
+      "python": "3.12.14",
+      "result": {
+        "claim": "bound_tight",
+        "plan_bytes": 49140509,
+        "work": {
+          "budget_events": [],
+          "denied_budgets": [],
+          "exact_node_limit": 0,
+          "exact_nodes_entered": 0,
+          "local_candidate_limit": 0,
+          "local_candidates_started": 0,
+          "local_state": "not_started",
+          "primitive_work_limit": 0,
+          "primitive_work_used": 0
+        }
+      }
+    },
+    {
+      "cpu_seconds": 6.996034848,
+      "dimensions": {
+        "manifest_bytes": 16777216,
+        "references_per_unit": 0,
+        "selector_scalars": 4096,
+        "selectors": 1000,
+        "setups": 0,
+        "shards": 64,
+        "units": 1000
+      },
+      "elapsed_seconds": 6.996977980998054,
+      "fixture": "unicode",
+      "input_sha256": "abd00a0ec7681e3da3fd53cf0615dd6cc4b20c0c3be76e4ec2e0ca9663aa08ca",
+      "operation": "verify",
+      "peak_rss_bytes": 195330048,
+      "platform": "linux",
+      "python": "3.12.14",
+      "result": {
+        "audit": {
+          "assignment_limit": 0,
+          "assignments_visited": 0,
+          "state": "not_requested",
+          "witness": null
+        },
+        "checks": {
+          "arithmetic": true,
+          "baseline": true,
+          "coverage": true
+        },
+        "errors": [],
+        "manifest_sha256": "1085b9b7d38084b33c5df48323d49136a04da6efceb24722b792b597ed709ffd",
+        "optimality": "bound_proved",
+        "plan_sha256": "32aad4250e94cf8f53eef9e87bf54cf2f83f8f0a6db985467d115192b9df6daa",
+        "producer_claim": "bound_tight",
+        "result": "valid",
+        "verification_version": 1
+      }
+    },
+    {
+      "cpu_seconds": 17.323282329999998,
+      "dimensions": {
+        "manifest_bytes": 16777216,
+        "references_per_unit": 0,
+        "selector_scalars": 4096,
+        "selectors": 1000,
+        "setups": 0,
+        "shards": 64,
+        "units": 1000
+      },
+      "elapsed_seconds": 17.339539997003158,
+      "fixture": "unicode",
+      "input_sha256": "abd00a0ec7681e3da3fd53cf0615dd6cc4b20c0c3be76e4ec2e0ca9663aa08ca",
+      "operation": "export",
+      "peak_rss_bytes": 262135808,
+      "platform": "linux",
+      "python": "3.12.14",
+      "result": {
+        "export_bytes": 49126706
+      }
+    }
+  ],
+  "rss_limit_bytes": 536870912,
+  "scope": "Fresh-process Linux resource observations; not scheduling estimates or universal speed guarantees",
+  "time_limit_seconds": 60
+}

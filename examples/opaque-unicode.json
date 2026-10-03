@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "setups": [
+    {
+      "cost_ms": 0,
+      "id": "z"
+    },
+    {
+      "cost_ms": 3,
+      "id": "a"
+    }
+  ],
+  "shards": 2,
+  "timing_basis": "exclusive-additive-once-per-shard-v1",
+  "units": [
+    {
+      "exclusive_cost_ms": 2,
+      "id": "A",
+      "selectors": [
+        "tests/雪.py::test_café",
+        "opaque -x @file"
+      ],
+      "setup_ids": [
+        "z",
+        "a"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 4,
+      "id": "B",
+      "selectors": [
+        "emoji😀"
+      ],
+      "setup_ids": [
+        "a"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 1,
+      "id": "C",
+      "selectors": [
+        "decomposed é"
+      ],
+      "setup_ids": []
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "setups": [
+    {
+      "cost_ms": 185,
+      "id": "s0000"
+    },
+    {
+      "cost_ms": 44,
+      "id": "s0001"
+    },
+    {
+      "cost_ms": 155,
+      "id": "s0002"
+    },
+    {
+      "cost_ms": 118,
+      "id": "s0003"
+    },
+    {
+      "cost_ms": 45,
+      "id": "s0004"
+    }
+  ],
+  "shards": 3,
+  "timing_basis": "exclusive-additive-once-per-shard-v1",
+  "units": [
+    {
+      "exclusive_cost_ms": 20,
+      "id": "u0000",
+      "selectors": [
+        "tests/test_generated.py::test_u0000_m0000",
+        "tests/test_generated.py::test_u0000_m0001"
+      ],
+      "setup_ids": [
+        "s0003",
+        "s0004"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 73,
+      "id": "u0001",
+      "selectors": [
+        "tests/test_generated.py::test_u0001_m0000"
+      ],
+      "setup_ids": [
+        "s0003"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 1,
+      "id": "u0002",
+      "selectors": [
+        "tests/test_generated.py::test_u0002_m0000",
+        "tests/test_generated.py::test_u0002_m0001",
+        "tests/test_generated.py::test_u0002_m0002"
+      ],
+      "setup_ids": [
+        "s0000",
+        "s0003"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 96,
+      "id": "u0003",
+      "selectors": [
+        "tests/test_generated.py::test_u0003_m0000",
+        "tests/test_generated.py::test_u0003_m0001",
+        "tests/test_generated.py::test_u0003_m0002"
+      ],
+      "setup_ids": [
+        "s0000",
+        "s0003"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 47,
+      "id": "u0004",
+      "selectors": [
+        "tests/test_generated.py::test_u0004_m0000"
+      ],
+      "setup_ids": [
+        "s0003"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 99,
+      "id": "u0005",
+      "selectors": [
+        "tests/test_generated.py::test_u0005_m0000"
+      ],
+      "setup_ids": []
+    },
+    {
+      "exclusive_cost_ms": 20,
+      "id": "u0006",
+      "selectors": [
+        "tests/test_generated.py::test_u0006_m0000",
+        "tests/test_generated.py::test_u0006_m0001"
+      ],
+      "setup_ids": []
+    },
+    {
+      "exclusive_cost_ms": 93,
+      "id": "u0007",
+      "selectors": [
+        "tests/test_generated.py::test_u0007_m0000"
+      ],
+      "setup_ids": [
+        "s0001",
+        "s0002"
+      ]
+    }
+  ]
+}

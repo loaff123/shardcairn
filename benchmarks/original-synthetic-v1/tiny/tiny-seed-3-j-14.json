@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "setups": [
+    {
+      "cost_ms": 9,
+      "id": "s0000"
+    },
+    {
+      "cost_ms": 12,
+      "id": "s0001"
+    },
+    {
+      "cost_ms": 43,
+      "id": "s0002"
+    }
+  ],
+  "shards": 4,
+  "timing_basis": "exclusive-additive-once-per-shard-v1",
+  "units": [
+    {
+      "exclusive_cost_ms": 66,
+      "id": "u0000",
+      "selectors": [
+        "tests/test_generated.py::test_u0000_m0000"
+      ],
+      "setup_ids": [
+        "s0000"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 30,
+      "id": "u0001",
+      "selectors": [
+        "tests/test_generated.py::test_u0001_m0000"
+      ],
+      "setup_ids": [
+        "s0002"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 90,
+      "id": "u0002",
+      "selectors": [
+        "tests/test_generated.py::test_u0002_m0000"
+      ],
+      "setup_ids": [
+        "s0000"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 22,
+      "id": "u0003",
+      "selectors": [
+        "tests/test_generated.py::test_u0003_m0000"
+      ],
+      "setup_ids": [
+        "s0000"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 42,
+      "id": "u0004",
+      "selectors": [
+        "tests/test_generated.py::test_u0004_m0000",
+        "tests/test_generated.py::test_u0004_m0001"
+      ],
+      "setup_ids": [
+        "s0002"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 10,
+      "id": "u0005",
+      "selectors": [
+        "tests/test_generated.py::test_u0005_m0000"
+      ],
+      "setup_ids": [
+        "s0000"
+      ]
+    }
+  ]
+}

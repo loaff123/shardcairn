@@ -1,0 +1,103 @@
+{
+  "$comment": "Structural shape only. DESIGN.md and MACHINE-PROTOCOL.md add mandatory semantic, canonicalization, strict-token, aggregate-cap and relational constraints.",
+  "$id": "urn:shardcairn:cli-result:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "additionalProperties": false,
+      "properties": {
+        "budget_exhausted": {
+          "type": "boolean"
+        },
+        "claim_status": {
+          "enum": [
+            "feasible",
+            "bound_tight",
+            "search_complete"
+          ]
+        },
+        "cli_result_version": {
+          "const": 1
+        },
+        "command": {
+          "const": "plan"
+        },
+        "completion_file": {
+          "const": "complete.json"
+        },
+        "files": {
+          "items": {
+            "pattern": "^(complete\\.json|plan\\.json|report\\.txt|export\\.json|shard-[0-9]{3}\\.(json|args))(?![\\s\\S])",
+            "type": "string"
+          },
+          "maxItems": 66,
+          "minItems": 3,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "result": {
+          "const": "created"
+        }
+      },
+      "required": [
+        "cli_result_version",
+        "result",
+        "completion_file",
+        "files",
+        "command",
+        "claim_status",
+        "budget_exhausted"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "cli_result_version": {
+          "const": 1
+        },
+        "command": {
+          "const": "export"
+        },
+        "completion_file": {
+          "const": "complete.json"
+        },
+        "files": {
+          "items": {
+            "pattern": "^(complete\\.json|plan\\.json|report\\.txt|export\\.json|shard-[0-9]{3}\\.(json|args))(?![\\s\\S])",
+            "type": "string"
+          },
+          "maxItems": 66,
+          "minItems": 3,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "format": {
+          "enum": [
+            "json",
+            "pytest-argfile"
+          ]
+        },
+        "result": {
+          "const": "created"
+        },
+        "shard_count": {
+          "maximum": 64,
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "cli_result_version",
+        "result",
+        "completion_file",
+        "files",
+        "command",
+        "format",
+        "shard_count"
+      ],
+      "type": "object"
+    }
+  ],
+  "title": "ShardCairn command success summary version 1"
+}

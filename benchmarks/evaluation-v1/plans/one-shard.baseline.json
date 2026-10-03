@@ -1,0 +1,1 @@
+{"algorithm_version":"exclusive-lpt-v1","metrics":{"activated_setup_occurrences":2,"duplicated_setup_ms":0,"exclusive_total_ms":14,"makespan_ms":32,"minimum_setup_ms":18,"setup_total_ms":18,"total_work_ms":32},"shards":[{"exclusive_cost_ms":14,"index":0,"load_ms":32,"setup_cost_ms":18,"unit_ids":["U0000","U0001","U0002"]}]}

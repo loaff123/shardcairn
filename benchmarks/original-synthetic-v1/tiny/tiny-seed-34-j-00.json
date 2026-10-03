@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "setups": [],
+  "shards": 2,
+  "timing_basis": "exclusive-additive-once-per-shard-v1",
+  "units": [
+    {
+      "exclusive_cost_ms": 58,
+      "id": "u0000",
+      "selectors": [
+        "tests/test_generated.py::test_u0000_m0000",
+        "tests/test_generated.py::test_u0000_m0001"
+      ],
+      "setup_ids": []
+    },
+    {
+      "exclusive_cost_ms": 56,
+      "id": "u0001",
+      "selectors": [
+        "tests/test_generated.py::test_u0001_m0000"
+      ],
+      "setup_ids": []
+    },
+    {
+      "exclusive_cost_ms": 34,
+      "id": "u0002",
+      "selectors": [
+        "tests/test_generated.py::test_u0002_m0000"
+      ],
+      "setup_ids": []
+    },
+    {
+      "exclusive_cost_ms": 48,
+      "id": "u0003",
+      "selectors": [
+        "tests/test_generated.py::test_u0003_m0000",
+        "tests/test_generated.py::test_u0003_m0001"
+      ],
+      "setup_ids": []
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$comment": "Structural shape only. DESIGN.md and MACHINE-PROTOCOL.md add mandatory semantic, canonicalization, strict-token, aggregate-cap and relational constraints.",
+  "$id": "urn:shardcairn:completion:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "completion_version": {
+      "const": 1
+    },
+    "files": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "pattern": "^(plan\\.json|report\\.txt|export\\.json|shard-[0-9]{3}\\.(json|args))(?![\\s\\S])",
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
+            "type": "string"
+          },
+          "size_bytes": {
+            "maximum": 67108864,
+            "minimum": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "size_bytes",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "maxItems": 65,
+      "minItems": 2,
+      "type": "array"
+    },
+    "kind": {
+      "enum": [
+        "plan",
+        "export"
+      ]
+    },
+    "manifest_sha256": {
+      "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
+      "type": "string"
+    },
+    "plan_sha256": {
+      "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
+      "type": "string"
+    }
+  },
+  "required": [
+    "completion_version",
+    "kind",
+    "manifest_sha256",
+    "plan_sha256",
+    "files"
+  ],
+  "title": "ShardCairn completion marker version 1",
+  "type": "object"
+}

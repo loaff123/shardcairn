@@ -1,0 +1,16 @@
+{
+  "$comment": "Structural shape only. DESIGN.md and MACHINE-PROTOCOL.md add mandatory semantic, canonicalization, strict-token, aggregate-cap and relational constraints.",
+  "$id": "urn:shardcairn:shard-selectors:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "items": {
+    "maxLength": 4096,
+    "minLength": 1,
+    "pattern": "^[^\\u0000-\\u001f\\u007f-\\u009f]+(?![\\s\\S])",
+    "type": "string"
+  },
+  "maxItems": 50000,
+  "minItems": 1,
+  "title": "ShardCairn shard selector array version 1",
+  "type": "array",
+  "uniqueItems": true
+}

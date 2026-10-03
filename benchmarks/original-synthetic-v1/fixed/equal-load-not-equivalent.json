@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "setups": [
+    {
+      "cost_ms": 5,
+      "id": "x"
+    }
+  ],
+  "shards": 2,
+  "timing_basis": "exclusive-additive-once-per-shard-v1",
+  "units": [
+    {
+      "exclusive_cost_ms": 5,
+      "id": "U0000",
+      "selectors": [
+        "tests/test_synthetic.py::test_u0000"
+      ],
+      "setup_ids": []
+    },
+    {
+      "exclusive_cost_ms": 0,
+      "id": "U0001",
+      "selectors": [
+        "tests/test_synthetic.py::test_u0001"
+      ],
+      "setup_ids": [
+        "x"
+      ]
+    },
+    {
+      "exclusive_cost_ms": 0,
+      "id": "U0002",
+      "selectors": [
+        "tests/test_synthetic.py::test_u0002"
+      ],
+      "setup_ids": [
+        "x"
+      ]
+    }
+  ]
+}

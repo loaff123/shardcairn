@@ -1,0 +1,69 @@
+{
+  "all-zero": {
+    "export/complete.json": "205eb669c0b862000eb987016512d9c7bca835f4162e8434fa268adb6ac7cb03",
+    "export/export.json": "1adec316667a8f597eebc18532b8105febcc694b88abcecce4969204cd39363c",
+    "export/shard-000.json": "2788a8b6b1f62dcc33371ec26cf388a3766f3feeeee3d6b978d3dbb26aa4f1ca",
+    "export/shard-001.json": "4266bcc32437ef22e2ce59e8fec94256b598d3cee2648ef67cdd7c7791b4516e",
+    "export/shard-002.json": "90a2705e1eabe6a2160fe5aa0118c61a10b153349c10c1119eb78a0e4ea4828d",
+    "export/shard-003.json": "bf3c24948270855cf60bbd5a7a8fd2f24ad00183e1c045c3cdc016b65905c9d7",
+    "manifest": "13cc8899fbbdcc5021e33ceb34442a2f7693d6aef3722af7244a70e2eb35c133",
+    "plan": "d2225ffad9601350285642c62426da5d3ed3cb37b5c16b9f1e3410e80897b4f0",
+    "plan/complete.json": "4058de5d1b948b5851a56521204b5114a847560c57cbf2a134a257d47bb1d3e5",
+    "plan/plan.json": "d2225ffad9601350285642c62426da5d3ed3cb37b5c16b9f1e3410e80897b4f0",
+    "plan/report.txt": "5f907229decbeca611ba47a423d61f9997d6dde673af5fd9dcba8a2b65302b97"
+  },
+  "integer-boundary": {
+    "export/complete.json": "9e83257df89db7a29e2f4398c8c6ab91aeb890f39c5f8ee3310f1a7b6e85c639",
+    "export/export.json": "0d6aa348abe70b6cd5353a11497dc4124bbadf684123ff7406d2bc272463c726",
+    "export/shard-000.json": "5fcb5649c35093e0b8b616d54ec7ddbebf477bcc6fcde4101e98b847f39a1338",
+    "manifest": "96ac2c1a134612037c82b104d3be7a3bb8b8c752d900715b85b8f0b72498e31b",
+    "plan": "6a7759a58f9df857648b0d072336c25b9e75ecb2e5bdf4dfd8400748f5fde241",
+    "plan/complete.json": "a6626906e893afa75e4b4fa738d68b3fdc5b40130dca92f6a3c159eceed9eb1f",
+    "plan/plan.json": "6a7759a58f9df857648b0d072336c25b9e75ecb2e5bdf4dfd8400748f5fde241",
+    "plan/report.txt": "551634efef3d5aab491953ea47755382a0fd81679191a0857b8901fca47e4a39"
+  },
+  "local-pair-trap": {
+    "export/complete.json": "a883b7407051cde424cb978bd33e1d7d9f0feb05fa58d3cb0330d0e727b785dd",
+    "export/export.json": "45f2e5a3aecfa009b318bdf84b5fa85b0c60d964f01b10411377cf1b0bda66f2",
+    "export/shard-000.json": "5fcb5649c35093e0b8b616d54ec7ddbebf477bcc6fcde4101e98b847f39a1338",
+    "export/shard-001.json": "f248fbe16e0c27d096e93ab8a54ea1300f1e0e8a4c7f06da260fe5c3ea8520d1",
+    "manifest": "02e4fc65d1dc2d79efcd7496e9c1c85c7f451701cfb3c082e149e0e98da21f4a",
+    "plan": "fb48295534cdd398a28c239dabff6a339a25b25c33eda5f6aa36437daa2c8798",
+    "plan/complete.json": "8a9c6bb0f599336e33945895571e1b535c2d124cfe5b139c8933b7de76360d6d",
+    "plan/plan.json": "fb48295534cdd398a28c239dabff6a339a25b25c33eda5f6aa36437daa2c8798",
+    "plan/report.txt": "d3bd5d5dd2ddf16a1d503a63510241f8260c9c12202e2b19f0cfb6d2489ce44e"
+  },
+  "opaque-unicode": {
+    "export/complete.json": "279601958e2c95d2580b5f6913e4b55ba69710ea53c82bb9d6cb17783d8c1808",
+    "export/export.json": "941a81099b32bad5dc3a8e837974ea484459851945634ace8993f06cc2893ba4",
+    "export/shard-000.json": "2192fb0eb500759925bad96df6f55a48347514a519814baaa12bbac79c20e2b9",
+    "export/shard-001.json": "68aa2b505fb98955c5a4b428d7274f4e2b428c60b4addef5abd3041a89bd0dc6",
+    "manifest": "4e3bd2ab592bc81a2d850d4c83ea23f8ef54a41c61f5623ab3834e69ec691264",
+    "plan": "2ab8e295e73667c9f1b1b8c6e5e3a89cdc28a00843f28cf0a9f20f9aabe97500",
+    "plan/complete.json": "3e83cc33c0d860915c1b0a5b4e5d9708d9d8cf327d19b2d0d8d18f2a4b35b22e",
+    "plan/plan.json": "2ab8e295e73667c9f1b1b8c6e5e3a89cdc28a00843f28cf0a9f20f9aabe97500",
+    "plan/report.txt": "ea853f93be255be83e176adfcadb012d6a2e8835c9e918cdf13bedad7ad95982"
+  },
+  "setup-reuse-four": {
+    "export/complete.json": "2833e260f914209fc7f65b28bd1f76ce964ccabb4286f00dde82ca6b6332d434",
+    "export/export.json": "53fc57abf29dc7b353be799061f301b4be52f7b3a4e11f4ea8d98b94e7fb4cdb",
+    "export/shard-000.json": "d2f4ca654ccdc2f88d8d2734a60b076b4e726a6b0fb6d63b671a735baabda1ce",
+    "export/shard-001.json": "dc6ac9cd9f6ce3b06e57a39807cb9ee622d63c497a60d64ef59fb5970b288d73",
+    "manifest": "c71a3c0a925f1771c7f63f893307e07b6788732ba1486d130b74f8517f4a1f96",
+    "plan": "22fbe4e3cf6e79def0eb7a01e3805c3a8ad5e5157999df5cbdaf0338e25397dd",
+    "plan/complete.json": "0f9226e105529231e885ade9f995a3a99eee49bd9ee85af57df50c17868c3230",
+    "plan/plan.json": "22fbe4e3cf6e79def0eb7a01e3805c3a8ad5e5157999df5cbdaf0338e25397dd",
+    "plan/report.txt": "c3db31449c202b24b0ebf9047b5308a1651b8c8da60cbfc828ba0d7a58952a27"
+  },
+  "unused-registry": {
+    "export/complete.json": "a0ce65d45361f0da78f75caf1ea40bfaceab5deb5eba4511a1fa92b899b1bae3",
+    "export/export.json": "2a846b605a62c649667b95a3cc8a39c4974c6d52263823504161faca3d29d462",
+    "export/shard-000.json": "d2f4ca654ccdc2f88d8d2734a60b076b4e726a6b0fb6d63b671a735baabda1ce",
+    "export/shard-001.json": "dc6ac9cd9f6ce3b06e57a39807cb9ee622d63c497a60d64ef59fb5970b288d73",
+    "manifest": "4d021874490a3cdcecde7c5dbb972d0d5b39f5c366f222812b944aae2ab68a02",
+    "plan": "b0e71d50184e385dbe2a171294cb99c346ad5e161246b3c8c582b758d4cb0429",
+    "plan/complete.json": "49148bce18f4cfdd514f7f362abed75dfd09bd6902166bf7f95fccbc8c8fa8b0",
+    "plan/plan.json": "b0e71d50184e385dbe2a171294cb99c346ad5e161246b3c8c582b758d4cb0429",
+    "plan/report.txt": "74f288c005109087e806a7477439965ecd1fccac470a1f4b2eba8dda1a9270f3"
+  }
+}

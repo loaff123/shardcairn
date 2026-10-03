@@ -1,0 +1,1 @@
+{"case_id":"aggregate-overflow-negative-test","code":"aggregate_range","exit_code":3,"expected_valid":false,"manifest_sha256":"1bde7f8afc389a5206130b4d2fb8998143ec1fcd7d187b1e8007025e9f6fd2b0","rejected_before_optimization":true}

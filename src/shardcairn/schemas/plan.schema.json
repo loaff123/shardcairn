@@ -1,0 +1,500 @@
+{
+  "$comment": "Closed structural shape only. All relational, arithmetic, original-manifest coverage/order, baseline non-regression, status/counter, byte/token, cost, and canonicalization constraints in DESIGN.md are normative. Search-completion labels are producer assertions, not independent certificates.",
+  "$defs": {
+    "baseline_shard": {
+      "additionalProperties": false,
+      "properties": {
+        "exclusive_cost_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "index": {
+          "maximum": 63,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "load_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "setup_cost_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "unit_ids": {
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "maxItems": 10000,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "index",
+        "unit_ids",
+        "exclusive_cost_ms",
+        "setup_cost_ms",
+        "load_ms"
+      ],
+      "type": "object"
+    },
+    "chosen_shard": {
+      "additionalProperties": false,
+      "properties": {
+        "exclusive_cost_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "index": {
+          "maximum": 63,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "load_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "selectors": {
+          "items": {
+            "$ref": "#/$defs/selector"
+          },
+          "maxItems": 50000,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "setup_cost_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "setup_ids": {
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "maxItems": 2048,
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "unit_ids": {
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "maxItems": 10000,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "index",
+        "unit_ids",
+        "exclusive_cost_ms",
+        "setup_cost_ms",
+        "load_ms",
+        "selectors",
+        "setup_ids"
+      ],
+      "type": "object"
+    },
+    "cost": {
+      "maximum": 9007199254740991,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "id": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}(?![\\s\\S])",
+      "type": "string"
+    },
+    "metrics": {
+      "additionalProperties": false,
+      "properties": {
+        "activated_setup_occurrences": {
+          "maximum": 131072,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "duplicated_setup_ms": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "exclusive_total_ms": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "makespan_ms": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "minimum_setup_ms": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "setup_total_ms": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "total_work_ms": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "exclusive_total_ms",
+        "setup_total_ms",
+        "minimum_setup_ms",
+        "duplicated_setup_ms",
+        "makespan_ms",
+        "total_work_ms",
+        "activated_setup_occurrences"
+      ],
+      "type": "object"
+    },
+    "selector": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "pattern": "^[^\\u0000-\\u001f\\u007f-\\u009f]+(?![\\s\\S])",
+      "type": "string"
+    }
+  },
+  "$id": "urn:shardcairn:plan:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "assignment": {
+      "items": {
+        "$ref": "#/$defs/chosen_shard"
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "type": "array"
+    },
+    "baseline": {
+      "additionalProperties": false,
+      "properties": {
+        "algorithm_version": {
+          "const": "exclusive-lpt-v1"
+        },
+        "metrics": {
+          "$ref": "#/$defs/metrics"
+        },
+        "shards": {
+          "items": {
+            "$ref": "#/$defs/baseline_shard"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "algorithm_version",
+        "shards",
+        "metrics"
+      ],
+      "type": "object"
+    },
+    "bounds": {
+      "additionalProperties": false,
+      "properties": {
+        "absolute_gap_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "average_lower_bound_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "gap_fraction": {
+          "additionalProperties": false,
+          "properties": {
+            "denominator": {
+              "maximum": 9007199254740991,
+              "minimum": 1,
+              "type": "integer"
+            },
+            "numerator": {
+              "$ref": "#/$defs/cost"
+            }
+          },
+          "required": [
+            "numerator",
+            "denominator"
+          ],
+          "type": "object"
+        },
+        "lower_bound_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "standalone_lower_bound_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "upper_bound_ms": {
+          "$ref": "#/$defs/cost"
+        }
+      },
+      "required": [
+        "standalone_lower_bound_ms",
+        "average_lower_bound_ms",
+        "lower_bound_ms",
+        "upper_bound_ms",
+        "absolute_gap_ms",
+        "gap_fraction"
+      ],
+      "type": "object"
+    },
+    "claim": {
+      "additionalProperties": false,
+      "properties": {
+        "primary_objective": {
+          "const": "makespan"
+        },
+        "secondary_optimal": {
+          "const": false
+        },
+        "status": {
+          "enum": [
+            "feasible",
+            "bound_tight",
+            "search_complete"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "primary_objective",
+        "secondary_optimal"
+      ],
+      "type": "object"
+    },
+    "manifest_hash": {
+      "additionalProperties": false,
+      "properties": {
+        "algorithm": {
+          "const": "sha256"
+        },
+        "digest": {
+          "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
+          "type": "string"
+        },
+        "normalization": {
+          "const": "shardcairn-manifest-c14n-v1"
+        }
+      },
+      "required": [
+        "algorithm",
+        "normalization",
+        "digest"
+      ],
+      "type": "object"
+    },
+    "metrics": {
+      "$ref": "#/$defs/metrics"
+    },
+    "model_version": {
+      "const": "exclusive-additive-once-per-shard-v1"
+    },
+    "plan_version": {
+      "const": 1
+    },
+    "solver": {
+      "additionalProperties": false,
+      "properties": {
+        "algorithm_version": {
+          "const": "shardcairn-portfolio-v1"
+        },
+        "exact": {
+          "additionalProperties": false,
+          "properties": {
+            "state": {
+              "enum": [
+                "not_requested",
+                "skipped_size",
+                "skipped_bound_tight",
+                "completed",
+                "budget_exhausted"
+              ]
+            }
+          },
+          "required": [
+            "state"
+          ],
+          "type": "object"
+        },
+        "incumbent_source": {
+          "enum": [
+            "seed",
+            "local",
+            "exact"
+          ]
+        },
+        "initial_seed": {
+          "enum": [
+            "lpt",
+            "marginal",
+            "affinity"
+          ]
+        },
+        "requested_mode": {
+          "enum": [
+            "auto",
+            "heuristic",
+            "exact"
+          ]
+        },
+        "seeds": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "enum": [
+                  "lpt",
+                  "marginal",
+                  "affinity"
+                ]
+              },
+              "state": {
+                "enum": [
+                  "completed",
+                  "budget_exhausted",
+                  "not_started"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "state"
+            ],
+            "type": "object"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        }
+      },
+      "required": [
+        "algorithm_version",
+        "requested_mode",
+        "initial_seed",
+        "incumbent_source",
+        "exact",
+        "seeds"
+      ],
+      "type": "object"
+    },
+    "work": {
+      "additionalProperties": false,
+      "properties": {
+        "budget_events": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "budget": {
+                "enum": [
+                  "primitive_work",
+                  "local_candidates",
+                  "exact_nodes"
+                ]
+              },
+              "phase": {
+                "enum": [
+                  "marginal_seed",
+                  "affinity_seed",
+                  "local",
+                  "exact"
+                ]
+              }
+            },
+            "required": [
+              "phase",
+              "budget"
+            ],
+            "type": "object"
+          },
+          "maxItems": 4,
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "denied_budgets": {
+          "items": {
+            "enum": [
+              "primitive_work",
+              "local_candidates",
+              "exact_nodes"
+            ]
+          },
+          "maxItems": 3,
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "exact_node_limit": {
+          "maximum": 2000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "exact_nodes_entered": {
+          "maximum": 2000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "local_candidate_limit": {
+          "maximum": 2000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "local_candidates_started": {
+          "maximum": 2000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "local_state": {
+          "enum": [
+            "not_started",
+            "fixed_point",
+            "budget_exhausted"
+          ]
+        },
+        "primitive_work_limit": {
+          "maximum": 50000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "primitive_work_used": {
+          "maximum": 50000000,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "primitive_work_limit",
+        "local_candidate_limit",
+        "exact_node_limit",
+        "primitive_work_used",
+        "local_candidates_started",
+        "exact_nodes_entered",
+        "denied_budgets",
+        "local_state",
+        "budget_events"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "plan_version",
+    "model_version",
+    "manifest_hash",
+    "solver",
+    "work",
+    "baseline",
+    "assignment",
+    "metrics",
+    "bounds",
+    "claim"
+  ],
+  "title": "ShardCairn plan version 1",
+  "type": "object"
+}

@@ -1,0 +1,198 @@
+{
+  "$comment": "Structural shape only. DESIGN.md and MACHINE-PROTOCOL.md add mandatory semantic, canonicalization, strict-token, aggregate-cap and relational constraints.",
+  "$id": "urn:shardcairn:verification:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "audit": {
+      "additionalProperties": false,
+      "properties": {
+        "assignment_limit": {
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "assignments_visited": {
+          "maximum": 1000000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "state": {
+          "enum": [
+            "not_requested",
+            "not_run",
+            "not_needed",
+            "completed",
+            "budget_exhausted",
+            "counterexample"
+          ]
+        },
+        "witness": {
+          "anyOf": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "assignment_vector": {
+                  "items": {
+                    "maximum": 5,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "maxItems": 10,
+                  "minItems": 1,
+                  "type": "array"
+                },
+                "makespan_ms": {
+                  "maximum": 9007199254740991,
+                  "minimum": 0,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "assignment_vector",
+                "makespan_ms"
+              ],
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "state",
+        "assignments_visited",
+        "assignment_limit",
+        "witness"
+      ],
+      "type": "object"
+    },
+    "checks": {
+      "additionalProperties": false,
+      "properties": {
+        "arithmetic": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "baseline": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "coverage": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "coverage",
+        "arithmetic",
+        "baseline"
+      ],
+      "type": "object"
+    },
+    "errors": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "pattern": "^[a-z][a-z0-9_]{0,63}(?![\\s\\S])",
+            "type": "string"
+          },
+          "message": {
+            "maxLength": 512,
+            "type": "string"
+          },
+          "pointer": {
+            "maxLength": 256,
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "pointer",
+          "message"
+        ],
+        "type": "object"
+      },
+      "maxItems": 10,
+      "minItems": 0,
+      "type": "array"
+    },
+    "manifest_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "optimality": {
+      "enum": [
+        "bound_proved",
+        "audit_proved",
+        "not_certified",
+        "not_optimal",
+        "contradicted",
+        "unknown"
+      ]
+    },
+    "plan_sha256": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "producer_claim": {
+      "anyOf": [
+        {
+          "enum": [
+            "feasible",
+            "bound_tight",
+            "search_complete"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "result": {
+      "enum": [
+        "valid",
+        "invalid",
+        "resource_limit"
+      ]
+    },
+    "verification_version": {
+      "const": 1
+    }
+  },
+  "required": [
+    "verification_version",
+    "result",
+    "manifest_sha256",
+    "plan_sha256",
+    "checks",
+    "producer_claim",
+    "optimality",
+    "audit",
+    "errors"
+  ],
+  "title": "ShardCairn verification result version 1",
+  "type": "object"
+}

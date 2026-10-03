@@ -1,0 +1,115 @@
+{
+  "$comment": "Structural schema only. The specification additionally requires exact JSON integer tokens (no fractions/exponents/booleans), duplicate-key rejection, Unicode scalar validation, aggregate count/cost caps, unique IDs/selectors, reference integrity, K<=N, lexical depth/token limits, and canonicalization.",
+  "$defs": {
+    "cost": {
+      "maximum": 9007199254740991,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "id": {
+      "maxLength": 64,
+      "minLength": 1,
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}(?![\\s\\S])",
+      "type": "string"
+    },
+    "selector": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "pattern": "^[^\\u0000-\\u001f\\u007f-\\u009f]+(?![\\s\\S])",
+      "type": "string"
+    },
+    "setup": {
+      "additionalProperties": false,
+      "properties": {
+        "cost_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "required": [
+        "id",
+        "cost_ms"
+      ],
+      "type": "object"
+    },
+    "unit": {
+      "additionalProperties": false,
+      "properties": {
+        "exclusive_cost_ms": {
+          "$ref": "#/$defs/cost"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "selectors": {
+          "items": {
+            "$ref": "#/$defs/selector"
+          },
+          "maxItems": 50000,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "setup_ids": {
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "maxItems": 64,
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "selectors",
+        "exclusive_cost_ms",
+        "setup_ids"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "urn:shardcairn:manifest:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "setups": {
+      "items": {
+        "$ref": "#/$defs/setup"
+      },
+      "maxItems": 2048,
+      "minItems": 0,
+      "type": "array"
+    },
+    "shards": {
+      "maximum": 64,
+      "minimum": 1,
+      "type": "integer"
+    },
+    "timing_basis": {
+      "const": "exclusive-additive-once-per-shard-v1"
+    },
+    "units": {
+      "items": {
+        "$ref": "#/$defs/unit"
+      },
+      "maxItems": 10000,
+      "minItems": 1,
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "timing_basis",
+    "shards",
+    "setups",
+    "units"
+  ],
+  "title": "ShardCairn manifest version 1",
+  "type": "object"
+}
