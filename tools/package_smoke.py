@@ -31,6 +31,15 @@ def build(source,destination,kind):
     return next(destination.glob('*.whl' if kind=='wheel' else '*.tar.gz'))
 
 
+def installed_origin_check(environment):
+    """Check real path containment, including platform temporary-directory aliases."""
+    return ('from pathlib import Path; import shardcairn; '
+            'origin=Path(shardcairn.__file__).resolve(); '
+            f'environment=Path({str(environment)!r}).resolve(); '
+            'assert origin.is_relative_to(environment), '
+            'f"Imported shardcairn from {origin}, outside environment {environment}"')
+
+
 def qualify(wheel,work,fixture,test_tools):
     env=work/'environment'
     venv.EnvBuilder(with_pip=True).create(env)
@@ -47,7 +56,7 @@ def qualify(wheel,work,fixture,test_tools):
     run([str(entry),'--help'],unrelated)
     test_environment={'PYTHONDONTWRITEBYTECODE':'1'}
     if test_tools is not None:test_environment['PYTHONPATH']=str(test_tools)
-    check='import shardcairn; assert shardcairn.__file__.startswith('+repr(str(env))+')'
+    check=installed_origin_check(env)
     run([str(python),'-c',check],unrelated,env=test_environment)
     suite=run([str(python),'-m','unittest','discover','-s',str(fixture.parents[1]/'tests'),'-v'],unrelated,env=test_environment,capture_all=True)
     match=re.search(r'Ran (\d+) tests?',suite)
